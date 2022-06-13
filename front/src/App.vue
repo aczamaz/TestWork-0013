@@ -1,15 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TaskCreatePage/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TaskCreatePage from './components/pages/TaskCreatePage.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TaskCreatePage
   }
 }
 </script>
@@ -21,6 +19,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 0;
+  margin: 0;
+}
+body{
+  margin: 0;
+  padding: 0;
 }
 </style>
