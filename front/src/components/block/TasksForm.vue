@@ -19,7 +19,7 @@
         </select>
     </div>
     <div class="d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="submit" @click="goToSave" class="btn btn-primary">Сохранить</button>
     </div>
     </form>
 </div>
@@ -27,8 +27,15 @@
 <script>
 export default {
     name: 'TasksForm',
-    data() {
-        return {
+    data()
+    {
+        return{
+            projectId:this.$route.params.id
+        }
+    },
+    methods:{
+        goToSave() {
+                this.$router.push('/project/'+this.projectId)
         }
     }
 }

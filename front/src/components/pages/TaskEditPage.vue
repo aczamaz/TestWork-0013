@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-      <Header nameSection='Create Task'/>
+      <Header nameSection='Edit Task'/>
       <TasksForm/>
     </div>
 </template>
@@ -8,7 +8,7 @@
 import Header from '../block/Header.vue';
 import TasksForm from '../block/TasksForm.vue';
 export default {
-  name: 'TaskCreatePage',
+  name: 'TaskEditPage',
   props: {
   },
   components: {

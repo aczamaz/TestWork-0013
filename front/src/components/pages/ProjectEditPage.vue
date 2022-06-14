@@ -1,19 +1,19 @@
 <template>
     <div class="page">
-      <Header nameSection='Create Task'/>
-      <TasksForm/>
+      <Header nameSection='Edit roject'/>
+      <ProjectsForm/>
     </div>
 </template>
 <script>
 import Header from '../block/Header.vue';
-import TasksForm from '../block/TasksForm.vue';
+import ProjectsForm from '../block/ProjectsForm.vue';
 export default {
-  name: 'TaskCreatePage',
+  name: 'ProjectEditPage',
   props: {
   },
   components: {
     Header,
-    TasksForm
+    ProjectsForm
   }
 }
 </script>

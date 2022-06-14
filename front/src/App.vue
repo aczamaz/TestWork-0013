@@ -1,18 +1,16 @@
 <template>
-  <TaskCreatePage/>
+  <router-view/> 
 </template>
 
 <script>
-import TaskCreatePage from './components/pages/TaskCreatePage.vue';
+
 export default {
-  name: 'App',
-  components: {
-    TaskCreatePage
-  }
+  name: 'App'
 }
 </script>
 
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

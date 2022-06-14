@@ -5,13 +5,13 @@
                 <h5 class="card-title">{{item.name}}</h5>
             </div>
             <div class="card-body">
-                <a href="#" class="btn btn-primary">Открыть</a>
-                <a href="#" class="btn m-1 btn-secondary">Редактировать</a>
-                <a href="#" class="btn btn-danger">Удалить</a>
+                <a @click="goToOpen(item.id)" class="btn btn-primary">Открыть</a>
+                <a @click="goToEdit(item.id)" class="btn m-1 btn-secondary">Редактировать</a>
+                <a class="btn btn-danger">Удалить</a>
             </div>
         </div>
         <div class="d-flex justify-content-end" style="width: 50rem;">
-            <a href="#" class="btn btn-primary">Создать</a>
+            <a class="btn btn-primary" @click="goToCreate">Создать</a>
         </div>
     </div>
 </template>
@@ -19,10 +19,23 @@
 export default {
     name: 'ProjectsList',
     data() {
-    return {
-      projects:[ { name:'project 1', id:1 }, { name:'project 2', id:2 }, { name:'project 3', id:3 } ]
+        return {
+            projectId:this.$route.params.id,
+            projects:[ { name:'project 1', id:1 }, { name:'project 2', id:2 }, { name:'project 3', id:3 } ]
+        }
+    },
+    methods: {
+        goToCreate() {
+            this.$router.push('/project/create')
+        },
+        goToEdit(projectId){
+            this.$router.push('/project/'+projectId+'/edit')
+        },
+        goToOpen(projectId)
+        {
+            this.$router.push('/project/'+projectId)
+        }
     }
-  }
 }
 </script>
 <style scoped>

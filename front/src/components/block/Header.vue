@@ -1,7 +1,9 @@
 <template>
     <div class="header">
-        <div class="header-main">    
-            Todo for Projects
+        <div class="header-main">
+            <router-link class="header-main" to="/">    
+                Todo for Projects
+            </router-link>
         </div>
         <div class="header-title">    
             {{nameSection}}

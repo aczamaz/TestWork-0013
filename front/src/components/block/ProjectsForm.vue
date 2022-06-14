@@ -10,7 +10,7 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     <div class="d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="submit" @click="goToSave" class="btn btn-primary">Сохранить</button>
     </div>
     </form>
 </div>
@@ -18,8 +18,14 @@
 <script>
 export default {
     name: 'ProjectsForm',
-    data() {
-        return {
+    data()
+    {
+        return{
+        }
+    },
+    methods:{
+        goToSave() {
+                this.$router.push('/')
         }
     }
 }
