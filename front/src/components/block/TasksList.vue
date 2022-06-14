@@ -22,15 +22,15 @@
     </div>
 </template>
 <script>
-const text = 'decription decription decription decription decription decription decription decription decription decription decription decription';
 export default {
     name: 'TasksList',
     data() {
+        const project = this.$store.state.project;
         return {
-            projectName:'project name',
+            projectName:project.name,
             projectId:this.$route.params.id,
-            projectDescription:'decription decription decription decription decription decription decription decription decription decription decription decription',
-            tasks:[ { name:'tasks 1',description:text, id:1 }, { name:'tasks 2',description:text, id:2 }, { name:'tasks 3',description:text, id:3 } ]
+            projectDescription:project.description,
+            tasks:this.$store.state.tasks
         }
     },
     methods: {

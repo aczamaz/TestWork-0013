@@ -11,7 +11,7 @@
     </div>
     <div class="form-group m-1">
         <label for="exampleFormControlTextarea1">Статус</label>
-        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+        <select class="form-select form-select-sm" aria-label="form-select-sm example">
             <option selected>Выберите Статус</option>
             <option value="1">не начали</option>
             <option value="2">начали</option>
@@ -35,7 +35,7 @@ export default {
     },
     methods:{
         goToSave() {
-                this.$router.push('/project/'+this.projectId)
+            this.$router.push('/project/'+this.projectId)
         }
     }
 }

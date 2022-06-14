@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             projectId:this.$route.params.id,
-            projects:[ { name:'project 1', id:1 }, { name:'project 2', id:2 }, { name:'project 3', id:3 } ]
+            projects:this.$store.state.projects
         }
     },
     methods: {
@@ -29,12 +29,18 @@ export default {
             this.$router.push('/project/create')
         },
         goToEdit(projectId){
+            this.$store.commit('selectProject',projectId);
             this.$router.push('/project/'+projectId+'/edit')
         },
         goToOpen(projectId)
         {
+            this.$store.commit('selectProject',projectId);
             this.$router.push('/project/'+projectId)
         }
+    },
+    created()
+    {
+        this.$store.dispatch('getProjects');
     }
 }
 </script>
