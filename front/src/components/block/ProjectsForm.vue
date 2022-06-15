@@ -18,6 +18,9 @@
 <script>
 export default {
     name: 'ProjectsForm',
+    props: {
+        dispatchEvent:String
+    },
     data()
     {
         return{
@@ -25,7 +28,7 @@ export default {
     },
     methods:{
         goToSave() {
-                this.$store.dispatch('saveProject')
+                this.$store.dispatch(this.dispatchEvent)
                 this.$router.push('/')
         }
     },

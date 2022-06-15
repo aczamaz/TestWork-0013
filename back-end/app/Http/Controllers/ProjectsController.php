@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProjectRequest;
 use App\Services\Project\ProjectService;
-use Illuminate\Http\Request;
+use App\Services\Task\TaskService;
 
 class ProjectsController extends Controller
 {
-    public function __construct(ProjectService $projectService)
+    public function __construct(ProjectService $projectService,TaskService $taskService)
     {
         $this->projectService = $projectService;
+        $this->taskService = $taskService;
     }
     /**
      * Display a listing of the resource.
@@ -41,7 +42,9 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        return $this->projectService->getOne($id);
+        $project = $this->projectService->getOne($id);
+        $project->tasks = $this->taskService->getTasks($project->id);
+        return $project;
     }
 
     /**

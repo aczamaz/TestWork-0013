@@ -11,11 +11,7 @@ const store = createStore({
                 name:'',
                 description:''
             },
-            tasks:[
-                { name:'tasks 1',status:'start',description:'decription decription decription', id:1 },
-                { name:'tasks 2',status:'start',description:'decription decription decription', id:2 },
-                { name:'tasks 3',status:'start',description:'decription decription decription', id:3 }
-            ],
+            tasks:[],
             task:{},
             taskForm:{
                 name:'',
@@ -56,7 +52,8 @@ const store = createStore({
         setProject(state,project)
         {
             state.project = project;
-        }
+            state.tasks = project.tasks;
+        },
     },
     actions:{
         async saveProject(context)
@@ -71,6 +68,12 @@ const store = createStore({
         },
         async getProject(context,id){
             const {data} = await axios.get(apiUrl+'/projects/'+id);
+            context.commit('setProject',data);
+        },
+        async editProject(context){
+            const {state} = context;
+            const dataForm = {name: state.projectForm.name,description:state.projectForm.description};
+            const {data} = await axios.put(apiUrl+'/projects/'+state.project.id,dataForm);
             context.commit('setProject',data);
         }
     }

@@ -1,7 +1,7 @@
 <template>
     <div class="page">
       <Header nameSection='Edit roject'/>
-      <ProjectsForm/>
+      <ProjectsForm dispatchEvent='editProject'/>
     </div>
 </template>
 <script>

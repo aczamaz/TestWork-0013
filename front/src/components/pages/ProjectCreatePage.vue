@@ -1,7 +1,7 @@
 <template>
     <div class="page">
       <Header nameSection='Create rojects'/>
-      <ProjectsForm/>
+      <ProjectsForm dispatchEvent='saveProject'/>
     </div>
 </template>
 <script>

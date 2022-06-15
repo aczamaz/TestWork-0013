@@ -40,6 +40,10 @@ export default {
         goToEdit(idtask){
             this.$router.push('/project/'+this.projectId+'/'+idtask+"/edit")
         }
+    },
+    mounted()
+    {
+        this.$store.dispatch('getProject',this.projectId);
     }
 }
 </script>
