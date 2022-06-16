@@ -1,7 +1,7 @@
 <template>
     <div class="page">
       <Header nameSection='Create Task'/>
-      <TasksForm/>
+      <TasksForm dispatchEvent='saveTask'/>
     </div>
 </template>
 <script>

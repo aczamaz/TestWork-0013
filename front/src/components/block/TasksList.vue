@@ -1,19 +1,20 @@
 <template>
     <div class="row justify-content-center">
         <div class="d-flex h3 justify-content-start" style="width: 50rem;">
-            {{projectName}}
+            {{project.name}}
         </div>
         <div class="d-flex justify-content-start" style="width: 50rem;">
-            {{projectDescription}}
+            {{project.description}}
         </div>
         <div class="card m-1" style="width: 50rem;" v-for="item in tasks" :key="item.id">
             <div class="card-body">
                 <h5 class="card-title">{{item.name}}</h5>
                 <p class="card-text">{{item.description}}</p>
+                <p class="card-text"><b>Статус</b>:{{item.status}}</p>
             </div>
             <div class="card-body">
                 <a @click="goToEdit(item.id)" class="btn m-1 btn-secondary">Редактировать</a>
-                <a href="#" class="btn btn-danger">Удалить</a>
+                <a @click="deleteTask(item.id)" href="#" class="btn btn-danger">Удалить</a>
             </div>
         </div>
         <div class="d-flex justify-content-end" style="width: 50rem;">
@@ -22,15 +23,12 @@
     </div>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'TasksList',
     data() {
-        const project = this.$store.state.project;
         return {
-            projectName:project.name,
             projectId:this.$route.params.id,
-            projectDescription:project.description,
-            tasks:this.$store.state.tasks
         }
     },
     methods: {
@@ -38,12 +36,20 @@ export default {
             this.$router.push('/project/'+this.projectId+'/create')
         },
         goToEdit(idtask){
+            this.$store.commit('selectTask',idtask);
             this.$router.push('/project/'+this.projectId+'/'+idtask+"/edit")
+        },
+        deleteTask(id)
+        {
+            this.$store.dispatch('deleteTask',id);
         }
     },
     mounted()
     {
         this.$store.dispatch('getProject',this.projectId);
+    },
+    computed: {
+        ...mapState(['tasks','project']),
     }
 }
 </script>

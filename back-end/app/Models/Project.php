@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    public $fillable = ['name','description','active'];
+    protected $fillable = ['name','description','active'];
     public function getTasks()
     {
         return $this->hasMany('App\Models\Task','id','project_id');

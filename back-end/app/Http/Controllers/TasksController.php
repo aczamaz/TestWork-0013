@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskRequest;
 use App\Services\Task\TaskService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TasksController extends Controller
 {
@@ -21,6 +22,7 @@ class TasksController extends Controller
      */
     public function store(TaskRequest $request)
     {
+        Log::debug($request->all());
         return $this->taskService->create($request->all());
     }
 

@@ -14,6 +14,6 @@ class TaskRepository extends BaseRepository
     }
     public function getTasks(int $id):Collection
     {
-        return $this->model->where('project_id',$id)->get();
+        return $this->model->where('project_id',$id)->orderBy('updated_at','desc')->get();
     }
 }

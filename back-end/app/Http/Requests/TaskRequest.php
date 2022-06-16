@@ -27,7 +27,7 @@ class TaskRequest extends FormRequest
             'name'=>'required|string',
             'description'=>'required|string',
             'status'=>'required|string',
-            'project_id'=>'required|exist:projects,id',
+            'project_id'=>'required|exists:projects,id',
         ];
     }
 }

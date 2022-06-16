@@ -19,7 +19,7 @@ class TaskFactory extends Factory
         return [
             'name'=>$this->faker->text(10),
             'description'=>$this->faker->text(200),
-            'status'=>'created',
+            'status'=>'Coздали',
             'project_id'=>1,
         ];
     }

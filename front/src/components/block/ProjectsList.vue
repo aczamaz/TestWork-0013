@@ -7,7 +7,7 @@
             <div class="card-body">
                 <a @click="goToOpen(item.id)" class="btn btn-primary">Открыть</a>
                 <a @click="goToEdit(item.id)" class="btn m-1 btn-secondary">Редактировать</a>
-                <a class="btn btn-danger">Удалить</a>
+                <a @click="deleteProject(item.id)" class="btn btn-danger">Удалить</a>
             </div>
         </div>
         <div class="d-flex justify-content-end" style="width: 50rem;">
@@ -16,12 +16,12 @@
     </div>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'ProjectsList',
     data() {
         return {
-            projectId:this.$route.params.id,
-            projects:this.$store.state.projects
+            projectId:this.$route.params.id
         }
     },
     methods: {
@@ -36,11 +36,18 @@ export default {
         {
             this.$store.commit('selectProject',projectId);
             this.$router.push('/project/'+projectId)
+        },
+        deleteProject(projectId)
+        {
+            this.$store.dispatch('deleteProject',projectId);
         }
     },
-    created()
+    mounted()
     {
         this.$store.dispatch('getProjects');
+    },
+    computed: {
+        ...mapState(['projects']),
     }
 }
 </script>
